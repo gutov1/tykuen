@@ -16,7 +16,7 @@ TypeScript · React · Vite · Supabase (PostgreSQL, Auth, Storage, Realtime) ·
 
 ```bash
 npm install
-cp .env.example .env.local   # заполнить ключи Supabase
+cp .env.example .env.local   # заполнить ключи Supabase, см. docs/SUPABASE_SETUP.md
 npm run dev
 ```
 
@@ -32,8 +32,8 @@ npm run dev
 ## Структура репозитория
 
 ```
-src/                  исходный код приложения
-tests/                тесты
+src/                  исходный код приложения и unit-тесты
+tests/                интеграционные тесты
 supabase/migrations/  миграции базы данных
 docs/                 документация, решения, отчёты по лабораторным
 public/               статические файлы, иконки
