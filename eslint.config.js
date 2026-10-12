@@ -6,11 +6,11 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', 'supabase/.temp'] },
+  { ignores: ['dist', 'coverage', 'node_modules', 'supabase/.temp'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier],
     files: ['**/*.{ts,tsx}'],
-    languageOptions: { ecmaVersion: 2020, globals: globals.browser },
+    languageOptions: { ecmaVersion: 2022, globals: { ...globals.browser, ...globals.node } },
     plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -18,5 +18,10 @@ export default tseslint.config(
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       eqeqeq: ['error', 'always'],
     },
+  },
+  {
+    files: ['**/*.{js,mjs,cjs}'],
+    extends: [prettier],
+    languageOptions: { ecmaVersion: 'latest', globals: globals.node },
   },
 );
